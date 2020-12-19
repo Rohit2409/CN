@@ -1,0 +1,1529 @@
+rohit@ubuntu:~/Desktop/USP$ cat > notes
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ x=5
+rohit@ubuntu:~/Desktop/USP$ y=7
+rohit@ubuntu:~/Desktop/USP$ z=7.2
+rohit@ubuntu:~/Desktop/USP$ test $x -eq $y
+rohit@ubuntu:~/Desktop/USP$ echo $?
+1
+rohit@ubuntu:~/Desktop/USP$ test $y -eq $z
+bash: test: 7.2: integer expression expected
+rohit@ubuntu:~/Desktop/USP$ test $y -eq $z; echo $?                                                    
+bash: test: 7.2: integer expression expected
+2
+rohit@ubuntu:~/Desktop/USP$ z=7
+rohit@ubuntu:~/Desktop/USP$ test $y -eq $z
+rohit@ubuntu:~/Desktop/USP$ echo $?
+0
+rohit@ubuntu:~/Desktop/USP$ z=8
+rohit@ubuntu:~/Desktop/USP$ test $y -eq $z
+rohit@ubuntu:~/Desktop/USP$ echo $?
+1
+rohit@ubuntu:~/Desktop/USP$ test $x -lt $y; echo $?
+0
+rohit@ubuntu:~/Desktop/USP$ test $z -lt $y; echo $?
+1
+rohit@ubuntu:~/Desktop/USP$ test $y == $z; echo $?
+1
+rohit@ubuntu:~/Desktop/USP$ test $y != $z; echo $?
+0
+rohit@ubuntu:~/Desktop/USP$ cat notes > note
+rohit@ubuntu:~/Desktop/USP$ cat note
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ cat notes
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ cat notes > /dev/tty
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ tty
+/dev/pts/0
+rohit@ubuntu:~/Desktop/USP$ cat > test_eva.sh
+if test $# -eq 0 ; then
+	echo "Usage: $0 pattern file"
+elif test $# -eq 2;then
+	grep "$1" $2 || echo "$1 not found in $2" > /dev/tty
+else
+	echo "YOU DIDN'T ENTER 2 ARGUMENT" > /dev/tty 
+fi
+rohit@ubuntu:~/Desktop/USP$ grep echo note
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+Usage: test_eva.sh pattern file
+rohit@ubuntu:~/Desktop/USP$ cat test_eva
+cat: test_eva: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ cat test_eva.sh
+if test $# -eq 0 ; then
+	echo "Usage: $0 pattern file"
+elif test $# -eq 2;then
+	grep "$1" $2 || echo "$1 not found in $2" > /dev/tty
+else
+	echo "YOU DIDN'T ENTER 2 ARGUMENT" > /dev/tty
+fi
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+Usage: test_eva.sh pattern file
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh >new
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo notes
+test- statement used to evaluate expression/ comapre 2 numbers | comapare strings | uses echo $
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo leap_yr.sh
+echo "enter year"
+ 	echo "$y is leap year"
+ 	echo "$y is not leap year"
+ 	echo "$y leap year"
+ 	echo "$y not leap year"
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh year leap_yr.sh
+echo "enter year"
+ 	echo "$y is leap year"
+ 	echo "$y is not leap year"
+ 	echo "$y leap year"
+ 	echo "$y not leap year"
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh rohit leap_yr.sh
+rohit not found in leap_yr.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh rohit 
+YOU DIDN'T ENTER 2 ARGUMENT
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh rohit kudache
+grep: kudache: No such file or directory
+rohit not found in kudache
+rohit@ubuntu:~/Desktop/USP$ echo $SHELL
+/bin/bash
+rohit@ubuntu:~/Desktop/USP$ uname
+Linux
+rohit@ubuntu:~/Desktop/USP$ uname -r
+5.4.0-48-generic
+rohit@ubuntu:~/Desktop/USP$ cat >notes
+numeric comparison operator used by the linux
+rohit@ubuntu:~/Desktop/USP$ cat test_eva.sh
+if test $# -eq 0 ; then
+	echo "Usage: $0 pattern file"
+elif test $# -eq 2;then
+	grep "$1" $2 || echo "$1 not found in $2" > /dev/tty
+else
+	echo "YOU DIDN'T ENTER 2 ARGUMENT" > /dev/tty
+fi
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 
+Usage: test_eva.sh pattern file
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20
+YOU DIDN'T ENTER 2 ARGUMENT
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 20
+grep: 20: No such file or directory
+20 not found in 20
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 20
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+Usage: test_eva.sh pattern file
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20
+YOU DIDN'T ENTER 2 ARGUMENT
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 20
+grep: 20: No such file or directory
+20 not found in 20
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 20
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh
+Usage: test_eva.sh pattern file
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo leap_yr.sh
+test_eva.sh: 5: Syntax error: newline unexpected
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo leap_yr.sh
+echo "enter year"
+ 	echo "$y is leap year"
+ 	echo "$y is not leap year"
+ 	echo "$y leap year"
+ 	echo "$y not leap year"
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo
+YOU DIDN'T ENTER 2 ARGUMENT
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo 20
+grep: 20: No such file or directory
+echo not found in 20
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh echo notes.sh
+grep: notes.sh: No such file or directory
+echo not found in notes.sh
+rohit@ubuntu:~/Desktop/USP$ sh test_eva.sh 20 202 2000
+YOU DIDN'T ENTER 2 ARGUMENT
+rohit@ubuntu:~/Desktop/USP$ gedit test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ 
+
+
+
+
+
+
+----------------
+
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+rohit@ubuntu:~/Desktop$ pwd
+/home/rohit/Desktop
+rohit@ubuntu:~/Desktop$ ls
+USP
+rohit@ubuntu:~/Desktop$ cd USP
+rohit@ubuntu:~/Desktop/USP$ cat leap_yr.sh
+echo "enter year"
+read y
+ if [  $((y % 400)) -eq 0  ]
+ then 
+ 	echo "$y is leap year"
+ elif [  $((y %100)) -eq 0  ] 
+ then
+ 	echo "$y is not leap year"
+ elif [  $((y % 4)) -eq 0  ]
+ then 
+ 	echo "$y leap year"
+ else 
+ 	echo "$y not leap year"
+fi
+rohit@ubuntu:~/Desktop/USP$ file leap_yr.sh
+leap_yr.sh: ASCII text
+rohit@ubuntu:~/Desktop/USP$ ls
+add.sh     empl.sh      largest.sh  note         rect.sh      tria.sh
+calci.sh   even.sh      leap.sh     notes        student.lst  tri.sh
+cels.sh    lab.sh       leap_yr.sh  one.sh       stu.sh       two.sh
+circle.sh  largest2.sh  new         positive.sh  test_eva.sh  typescript
+rohit@ubuntu:~/Desktop/USP$ file one.sh
+one.sh: ASCII text
+rohit@ubuntu:~/Desktop/USP$ cd ..
+rohit@ubuntu:~/Desktop$ file USP
+USP: directory
+rohit@ubuntu:~/Desktop$ cd USP
+rohit@ubuntu:~/Desktop/USP$ file *
+add.sh:      ASCII text
+calci.sh:    ASCII text
+cels.sh:     ASCII text
+circle.sh:   ASCII text
+empl.sh:     ASCII text
+even.sh:     ASCII text
+lab.sh:      ASCII text
+largest2.sh: ASCII text
+largest.sh:  ASCII text
+leap.sh:     ASCII text
+leap_yr.sh:  ASCII text
+new:         ASCII text
+note:        ASCII text
+notes:       ASCII text
+one.sh:      ASCII text
+positive.sh: ASCII text
+rect.sh:     ASCII text
+student.lst: ASCII text
+stu.sh:      ASCII text
+test_eva.sh: ASCII text
+tria.sh:     ASCII text
+tri.sh:      ASCII text
+two.sh:      ASCII text
+typescript:  empty
+rohit@ubuntu:~/Desktop/USP$ wc -l -w -c one.sh
+ 1  3 19 one.sh
+rohit@ubuntu:~/Desktop/USP$ cat one.sh
+echo "HELLO WORLD"
+rohit@ubuntu:~/Desktop/USP$ more leap_yr.sh
+echo "enter year"
+read y
+ if [  $((y % 400)) -eq 0  ]
+ then 
+ 	echo "$y is leap year"
+ elif [  $((y %100)) -eq 0  ] 
+ then
+ 	echo "$y is not leap year"
+ elif [  $((y % 4)) -eq 0  ]
+ then 
+ 	echo "$y leap year"
+ else 
+ 	echo "$y not leap year"
+fi
+rohit@ubuntu:~/Desktop/USP$ od ---octal dump --> use to see unseen char
+od: unrecognized option '---octal'
+Try 'od --help' for more information.
+rohit@ubuntu:~/Desktop/USP$ od -b leap_yr.sh
+0000000 145 143 150 157 040 042 145 156 164 145 162 040 171 145 141 162
+0000020 042 012 162 145 141 144 040 171 012 040 151 146 040 133 040 040
+0000040 044 050 050 171 040 045 040 064 060 060 051 051 040 055 145 161
+0000060 040 060 040 040 135 012 040 164 150 145 156 040 012 040 011 145
+0000100 143 150 157 040 042 044 171 040 151 163 040 154 145 141 160 040
+0000120 171 145 141 162 042 012 040 145 154 151 146 040 133 040 040 044
+0000140 050 050 171 040 045 061 060 060 051 051 040 055 145 161 040 060
+0000160 040 040 135 040 012 040 164 150 145 156 012 040 011 145 143 150
+0000200 157 040 042 044 171 040 151 163 040 156 157 164 040 154 145 141
+0000220 160 040 171 145 141 162 042 012 040 145 154 151 146 040 133 040
+0000240 040 044 050 050 171 040 045 040 064 051 051 040 055 145 161 040
+0000260 060 040 040 135 012 040 164 150 145 156 040 012 040 011 145 143
+0000300 150 157 040 042 044 171 040 154 145 141 160 040 171 145 141 162
+0000320 042 012 040 145 154 163 145 040 012 040 011 145 143 150 157 040
+0000340 042 044 171 040 156 157 164 040 154 145 141 160 040 171 145 141
+0000360 162 042 012 146 151 012
+0000366
+rohit@ubuntu:~/Desktop/USP$ od -b one.sh
+0000000 145 143 150 157 040 042 110 105 114 114 117 040 127 117 122 114
+0000020 104 042 012
+0000023
+rohit@ubuntu:~/Desktop/USP$ od -bc one.sh
+0000000 145 143 150 157 040 042 110 105 114 114 117 040 127 117 122 114
+          e   c   h   o       "   H   E   L   L   O       W   O   R   L
+0000020 104 042 012
+          D   "  \n
+0000023
+rohit@ubuntu:~/Desktop/USP$ od-displays ascii octal values of input
+od-displays: command not found
+rohit@ubuntu:~/Desktop/USP$ cmp - comparing 2 files
+cmp: invalid --ignore-initial value 'files'
+cmp: Try 'cmp --help' for more information.
+rohit@ubuntu:~/Desktop/USP$ man cmp
+rohit@ubuntu:~/Desktop/USP$ cat one.sh
+echo "HELLO WORLD"
+rohit@ubuntu:~/Desktop/USP$ cat two.sh
+echo "HELLO WORLD"
+rohit@ubuntu:~/Desktop/USP$ cmp one.sh two.sh
+rohit@ubuntu:~/Desktop/USP$ cmp one two
+cmp: one: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ cmp one.sh two.sh
+rohit@ubuntu:~/Desktop/USP$ cmp one.sh leap_yr.sh
+one.sh leap_yr.sh differ: byte 7, line 1
+rohit@ubuntu:~/Desktop/USP$ comm one.sh two.sh
+		echo "HELLO WORLD"
+rohit@ubuntu:~/Desktop/USP$ comm one.sh leap_yr.sh
+	echo "enter year"
+echo "HELLO WORLD"
+	read y
+comm: file 2 is not in sorted order
+	 if [  $((y % 400)) -eq 0  ]
+	 then 
+	 	echo "$y is leap year"
+	 elif [  $((y %100)) -eq 0  ] 
+	 then
+	 	echo "$y is not leap year"
+	 elif [  $((y % 4)) -eq 0  ]
+	 then 
+	 	echo "$y leap year"
+	 else 
+	 	echo "$y not leap year"
+	fi
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 92
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:43 add.sh
+-rw-rw-r-- 1 rohit rohit 193 Sep 28 22:34 calci.sh
+-rw-rw-r-- 1 rohit rohit 191 Oct  8 02:18 cels.sh
+-rw-rw-r-- 1 rohit rohit 233 Oct  1 02:47 circle.sh
+-rw-rw-r-- 1 rohit rohit 200 Oct  8 02:30 empl.sh
+-rw-rw-r-- 1 rohit rohit 105 Oct  8 02:38 even.sh
+-rw-rw-r-- 1 rohit rohit  47 Oct  1 02:28 lab.sh
+-rw-rw-r-- 1 rohit rohit 148 Oct  8 02:08 largest2.sh
+-rw-rw-r-- 1 rohit rohit 287 Oct  8 02:31 largest.sh
+-rw-rw-r-- 1 rohit rohit 321 Oct  5 22:00 leap.sh
+-rw-rw-r-- 1 rohit rohit 246 Oct  8 02:15 leap_yr.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 12 22:01 new
+-rw-rw-r-- 1 rohit rohit  96 Oct 12 21:51 note
+-rw-rw-r-- 1 rohit rohit  46 Oct 12 22:04 notes
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:24 one.sh
+-rw-rw-r-- 1 rohit rohit 193 Oct  8 01:56 positive.sh
+-rw-rw-r-- 1 rohit rohit 110 Oct  1 02:51 rect.sh
+-rw-rw-r-- 1 rohit rohit 165 Oct  8 04:16 student.lst
+-rw-rw-r-- 1 rohit rohit 102 Oct  8 04:36 stu.sh
+-rw-rw-r-- 1 rohit rohit 170 Oct 12 22:31 test_eva.sh
+-rw-rw-r-- 1 rohit rohit 132 Oct  1 02:50 tria.sh
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:48 tri.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:53 two.sh
+-rw-rw-r-- 1 rohit rohit   0 Oct  1 02:33 typescript
+-rw-rw-r-- 1 rohit rohit   0 Oct 13 20:56 use
+rohit@ubuntu:~/Desktop/USP$ gedit student2.lst
+rohit@ubuntu:~/Desktop/USP$ cmp student.lst student2.lst
+student.lst student2.lst differ: byte 2, line 1
+rohit@ubuntu:~/Desktop/USP$ cat student.lst
+1BM18CS060 | NAME | B SECTION | 5 | CN USP ADS AA | 5.0
+1BM18CS083 | NAME2 | A SECTION | 5 | AI CN AA | 6.0
+1BM18CS084 | NAME3 ABAC | C SECTION | 6 | AA BB CC | 9.0
+rohit@ubuntu:~/Desktop/USP$ cat student2.lst
+123 | ROHIT | COA | 3 | B | 9.0
+rohit@ubuntu:~/Desktop/USP$ cmp student.lst student2.lst
+student.lst student2.lst differ: byte 2, line 1
+rohit@ubuntu:~/Desktop/USP$ comm student.lst student2.lst
+	123 | ROHIT | COA | 3 | B | 9.0
+1BM18CS060 | NAME | B SECTION | 5 | CN USP ADS AA | 5.0
+1BM18CS083 | NAME2 | A SECTION | 5 | AI CN AA | 6.0
+1BM18CS084 | NAME3 ABAC | C SECTION | 6 | AA BB CC | 9.0
+rohit@ubuntu:~/Desktop/USP$ cat emp.sh
+cat: emp.sh: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ cat emp.lst
+cat: emp.lst: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ cat student2.lst
+123 | ROHIT | COA | 3 | B | 9.0
+rohit@ubuntu:~/Desktop/USP$ comm student.lst student2.lst
+	123 | ROHIT | COA | 3 | B | 9.0
+1BM18CS060 | NAME | B SECTION | 5 | CN USP ADS AA | 5.0
+1BM18CS083 | NAME2 | A SECTION | 5 | AI CN AA | 6.0
+1BM18CS084 | NAME3 ABAC | C SECTION | 6 | AA BB CC | 9.0
+rohit@ubuntu:~/Desktop/USP$ cat class1
+cat: class1: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ cat > class1
+rohit
+kudache
+raju
+rohit@ubuntu:~/Desktop/USP$ cat > class2
+kudache
+raj
+rohi
+raks
+rohit@ubuntu:~/Desktop/USP$ comm class1 class2
+	kudache
+	raj
+	rohi
+comm: file 2 is not in sorted order
+	raks
+rohit
+comm: file 1 is not in sorted order
+kudache
+raju
+rohit@ubuntu:~/Desktop/USP$ wc -c cat one.sh
+wc: cat: No such file or directory
+19 one.sh
+19 total
+rohit@ubuntu:~/Desktop/USP$ wc -c one.sh
+19 one.sh
+rohit@ubuntu:~/Desktop/USP$ gzip -- compression
+gzip: compression: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ gzip class1
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 104
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:43 add.sh
+-rw-rw-r-- 1 rohit rohit 193 Sep 28 22:34 calci.sh
+-rw-rw-r-- 1 rohit rohit 191 Oct  8 02:18 cels.sh
+-rw-rw-r-- 1 rohit rohit 233 Oct  1 02:47 circle.sh
+-rw-rw-r-- 1 rohit rohit  46 Oct 13 21:12 class1.gz
+-rw-rw-r-- 1 rohit rohit  22 Oct 13 21:12 class2
+-rw-rw-r-- 1 rohit rohit 200 Oct  8 02:30 empl.sh
+-rw-rw-r-- 1 rohit rohit 105 Oct  8 02:38 even.sh
+-rw-rw-r-- 1 rohit rohit  47 Oct  1 02:28 lab.sh
+-rw-rw-r-- 1 rohit rohit 148 Oct  8 02:08 largest2.sh
+-rw-rw-r-- 1 rohit rohit 287 Oct  8 02:31 largest.sh
+-rw-rw-r-- 1 rohit rohit 321 Oct  5 22:00 leap.sh
+-rw-rw-r-- 1 rohit rohit 246 Oct  8 02:15 leap_yr.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 12 22:01 new
+-rw-rw-r-- 1 rohit rohit  96 Oct 12 21:51 note
+-rw-rw-r-- 1 rohit rohit  46 Oct 12 22:04 notes
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:24 one.sh
+-rw-rw-r-- 1 rohit rohit 193 Oct  8 01:56 positive.sh
+-rw-rw-r-- 1 rohit rohit 110 Oct  1 02:51 rect.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 13 21:06 student2.lst
+-rw-rw-r-- 1 rohit rohit 165 Oct  8 04:16 student.lst
+-rw-rw-r-- 1 rohit rohit 102 Oct  8 04:36 stu.sh
+-rw-rw-r-- 1 rohit rohit 170 Oct 12 22:31 test_eva.sh
+-rw-rw-r-- 1 rohit rohit 132 Oct  1 02:50 tria.sh
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:48 tri.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:53 two.sh
+-rw-rw-r-- 1 rohit rohit   0 Oct  1 02:33 typescript
+-rw-rw-r-- 1 rohit rohit   0 Oct 13 20:56 use
+rohit@ubuntu:~/Desktop/USP$ wc -c class1
+wc: class1: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ wc -c class1.gz
+46 class1.gz
+rohit@ubuntu:~/Desktop/USP$ gunzip class1.gz
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 104
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:43 add.sh
+-rw-rw-r-- 1 rohit rohit 193 Sep 28 22:34 calci.sh
+-rw-rw-r-- 1 rohit rohit 191 Oct  8 02:18 cels.sh
+-rw-rw-r-- 1 rohit rohit 233 Oct  1 02:47 circle.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct 13 21:12 class1
+-rw-rw-r-- 1 rohit rohit  22 Oct 13 21:12 class2
+-rw-rw-r-- 1 rohit rohit 200 Oct  8 02:30 empl.sh
+-rw-rw-r-- 1 rohit rohit 105 Oct  8 02:38 even.sh
+-rw-rw-r-- 1 rohit rohit  47 Oct  1 02:28 lab.sh
+-rw-rw-r-- 1 rohit rohit 148 Oct  8 02:08 largest2.sh
+-rw-rw-r-- 1 rohit rohit 287 Oct  8 02:31 largest.sh
+-rw-rw-r-- 1 rohit rohit 321 Oct  5 22:00 leap.sh
+-rw-rw-r-- 1 rohit rohit 246 Oct  8 02:15 leap_yr.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 12 22:01 new
+-rw-rw-r-- 1 rohit rohit  96 Oct 12 21:51 note
+-rw-rw-r-- 1 rohit rohit  46 Oct 12 22:04 notes
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:24 one.sh
+-rw-rw-r-- 1 rohit rohit 193 Oct  8 01:56 positive.sh
+-rw-rw-r-- 1 rohit rohit 110 Oct  1 02:51 rect.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 13 21:06 student2.lst
+-rw-rw-r-- 1 rohit rohit 165 Oct  8 04:16 student.lst
+-rw-rw-r-- 1 rohit rohit 102 Oct  8 04:36 stu.sh
+-rw-rw-r-- 1 rohit rohit 170 Oct 12 22:31 test_eva.sh
+-rw-rw-r-- 1 rohit rohit 132 Oct  1 02:50 tria.sh
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:48 tri.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:53 two.sh
+-rw-rw-r-- 1 rohit rohit   0 Oct  1 02:33 typescript
+-rw-rw-r-- 1 rohit rohit   0 Oct 13 20:56 use
+rohit@ubuntu:~/Desktop/USP$ wc -c class1
+19 class1
+rohit@ubuntu:~/Desktop/USP$ cd ..
+rohit@ubuntu:~/Desktop$ gzip USP
+gzip: USP is a directory -- ignored
+rohit@ubuntu:~/Desktop$ gzip -d USP
+gzip: USP is a directory -- ignored
+rohit@ubuntu:~/Desktop$ gzip -r USP
+rohit@ubuntu:~/Desktop$ ls -l
+total 4
+drwxrwxr-x 2 rohit rohit 4096 Oct 13 21:17 USP
+rohit@ubuntu:~/Desktop$ gunzip -r USP
+rohit@ubuntu:~/Desktop$ gunzip -dr USP
+rohit@ubuntu:~/Desktop$ ls -l
+total 4
+drwxrwxr-x 2 rohit rohit 4096 Oct 13 21:17 USP
+rohit@ubuntu:~/Desktop$ cd USP
+rohit@ubuntu:~/Desktop/USP$ cd ..
+rohit@ubuntu:~/Desktop$ gzip -r USP
+rohit@ubuntu:~/Desktop$ cd USP
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 112
+-rw-rw-r-- 1 rohit rohit 106 Oct  1 02:43 add.sh.gz
+-rw-rw-r-- 1 rohit rohit 134 Sep 28 22:34 calci.sh.gz
+-rw-rw-r-- 1 rohit rohit 175 Oct  8 02:18 cels.sh.gz
+-rw-rw-r-- 1 rohit rohit 147 Oct  1 02:47 circle.sh.gz
+-rw-rw-r-- 1 rohit rohit  46 Oct 13 21:12 class1.gz
+-rw-rw-r-- 1 rohit rohit  47 Oct 13 21:12 class2.gz
+-rw-rw-r-- 1 rohit rohit 145 Oct  8 02:30 empl.sh.gz
+-rw-rw-r-- 1 rohit rohit 110 Oct  8 02:38 even.sh.gz
+-rw-rw-r-- 1 rohit rohit  72 Oct  1 02:28 lab.sh.gz
+-rw-rw-r-- 1 rohit rohit 125 Oct  8 02:08 largest2.sh.gz
+-rw-rw-r-- 1 rohit rohit 154 Oct  8 02:31 largest.sh.gz
+-rw-rw-r-- 1 rohit rohit 162 Oct  5 22:00 leap.sh.gz
+-rw-rw-r-- 1 rohit rohit 136 Oct  8 02:15 leap_yr.sh.gz
+-rw-rw-r-- 1 rohit rohit  56 Oct 12 22:01 new.gz
+-rw-rw-r-- 1 rohit rohit 103 Oct 12 21:51 note.gz
+-rw-rw-r-- 1 rohit rohit  71 Oct 12 22:04 notes.gz
+-rw-rw-r-- 1 rohit rohit  46 Oct  1 02:24 one.sh.gz
+-rw-rw-r-- 1 rohit rohit 145 Oct  8 01:56 positive.sh.gz
+-rw-rw-r-- 1 rohit rohit 104 Oct  1 02:51 rect.sh.gz
+-rw-rw-r-- 1 rohit rohit  58 Oct 13 21:06 student2.lst.gz
+-rw-rw-r-- 1 rohit rohit 128 Oct  8 04:16 student.lst.gz
+-rw-rw-r-- 1 rohit rohit 101 Oct  8 04:36 stu.sh.gz
+-rw-rw-r-- 1 rohit rohit 163 Oct 12 22:31 test_eva.sh.gz
+-rw-rw-r-- 1 rohit rohit 122 Oct  1 02:50 tria.sh.gz
+-rw-rw-r-- 1 rohit rohit 106 Oct  1 02:48 tri.sh.gz
+-rw-rw-r-- 1 rohit rohit  46 Oct  1 02:53 two.sh.gz
+-rw-rw-r-- 1 rohit rohit  31 Oct  1 02:33 typescript.gz
+-rw-rw-r-- 1 rohit rohit  24 Oct 13 20:56 use.gz
+rohit@ubuntu:~/Desktop/USP$ cd ..
+rohit@ubuntu:~/Desktop$ ginzip -r USP
+
+Command 'ginzip' not found, did you mean:
+
+  command 'gunzip' from deb gzip (1.10-0ubuntu4)
+
+Try: sudo apt install <deb name>
+
+rohit@ubuntu:~/Desktop$ gunzip -r USP
+rohit@ubuntu:~/Desktop$ gzip -dr USP
+rohit@ubuntu:~/Desktop$ ls -l
+total 4
+drwxrwxr-x 2 rohit rohit 4096 Oct 13 21:19 USP
+rohit@ubuntu:~/Desktop$ gunzip -r USP
+rohit@ubuntu:~/Desktop$ cd USP
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 104
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:43 add.sh
+-rw-rw-r-- 1 rohit rohit 193 Sep 28 22:34 calci.sh
+-rw-rw-r-- 1 rohit rohit 191 Oct  8 02:18 cels.sh
+-rw-rw-r-- 1 rohit rohit 233 Oct  1 02:47 circle.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct 13 21:12 class1
+-rw-rw-r-- 1 rohit rohit  22 Oct 13 21:12 class2
+-rw-rw-r-- 1 rohit rohit 200 Oct  8 02:30 empl.sh
+-rw-rw-r-- 1 rohit rohit 105 Oct  8 02:38 even.sh
+-rw-rw-r-- 1 rohit rohit  47 Oct  1 02:28 lab.sh
+-rw-rw-r-- 1 rohit rohit 148 Oct  8 02:08 largest2.sh
+-rw-rw-r-- 1 rohit rohit 287 Oct  8 02:31 largest.sh
+-rw-rw-r-- 1 rohit rohit 321 Oct  5 22:00 leap.sh
+-rw-rw-r-- 1 rohit rohit 246 Oct  8 02:15 leap_yr.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 12 22:01 new
+-rw-rw-r-- 1 rohit rohit  96 Oct 12 21:51 note
+-rw-rw-r-- 1 rohit rohit  46 Oct 12 22:04 notes
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:24 one.sh
+-rw-rw-r-- 1 rohit rohit 193 Oct  8 01:56 positive.sh
+-rw-rw-r-- 1 rohit rohit 110 Oct  1 02:51 rect.sh
+-rw-rw-r-- 1 rohit rohit  32 Oct 13 21:06 student2.lst
+-rw-rw-r-- 1 rohit rohit 165 Oct  8 04:16 student.lst
+-rw-rw-r-- 1 rohit rohit 102 Oct  8 04:36 stu.sh
+-rw-rw-r-- 1 rohit rohit 170 Oct 12 22:31 test_eva.sh
+-rw-rw-r-- 1 rohit rohit 132 Oct  1 02:50 tria.sh
+-rw-rw-r-- 1 rohit rohit 109 Oct  1 02:48 tri.sh
+-rw-rw-r-- 1 rohit rohit  19 Oct  1 02:53 two.sh
+-rw-rw-r-- 1 rohit rohit   0 Oct  1 02:33 typescript
+-rw-rw-r-- 1 rohit rohit   0 Oct 13 20:56 use
+rohit@ubuntu:~/Desktop/USP$ 
+
+---------------------------------------------------
+rohit@ubuntu:~/Desktop/USP/Class$ cd ..
+rohit@ubuntu:~/Desktop/USP$ cat > new1
+hi
+rohit@ubuntu:~/Desktop/USP$ 
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 28
+drwxrwxrwx 2 rohit rohit 4096 Nov 17 10:50 Class
+drwxrwxr-x 2 rohit rohit 4096 Nov 17 10:23 LAB1
+drwxrwxr-x 2 rohit rohit 4096 Oct 21 18:33 LAB2
+drwxrwxr-x 2 rohit rohit 4096 Oct 21 18:33 LAB3
+drwxrwxr-x 2 rohit rohit 4096 Nov  6 14:40 LAB4
+drwxrwxr-x 2 rohit rohit 4096 Nov 17 09:39 LAB5
+-rw-rw-r-- 1 rohit rohit    3 Nov 18 09:21 new1
+rohit@ubuntu:~/Desktop/USP$ rm new1
+rohit@ubuntu:~/Desktop/USP$ find . -type d -print
+.
+./LAB1
+./Class
+./LAB2
+./LAB5
+./LAB4
+./LAB3
+rohit@ubuntu:~/Desktop/USP$ cat > new1
+hi
+rohit@ubuntu:~/Desktop/USP$ find . -type d -print
+.
+./LAB1
+./Class
+./LAB2
+./LAB5
+./LAB4
+./LAB3
+rohit@ubuntu:~/Desktop/USP$ rm new1
+rohit@ubuntu:~/Desktop/USP$ find 777 -a -type d -print
+find: invalid expression; you have used a binary operator '-a' with nothing before it.
+rohit@ubuntu:~/Desktop/USP$ find . -perm 777 -a -type d -print
+./Class
+rohit@ubuntu:~/Desktop/USP$ find . -name '*.sh' -print
+./LAB1/tria.sh
+./LAB1/rect.sh
+./LAB1/circle.sh
+./Class/filetest.sh
+./Class/while.sh
+./Class/two.sh
+./Class/lab.sh
+./Class/for1.sh
+./Class/while1.sh
+./Class/for.sh
+./Class/stu.sh
+./Class/for2.sh
+./Class/menu.sh
+./Class/one.sh
+./Class/calci.sh
+./LAB2/largest.sh
+./LAB2/even.sh
+./LAB2/empl.sh
+./LAB2/largest2.sh
+./LAB2/leap_yr.sh
+./LAB2/cels.sh
+./LAB2/positive.sh
+./LAB5/sum-n.sh
+./LAB5/power.sh
+./LAB5/comib.sh
+./LAB5/sum-even.sh
+./LAB4/prime.sh
+./LAB4/sum-of-n.sh
+./LAB4/fibonoci.sh
+./LAB4/primerange.sh
+./LAB4/factorial.sh
+./LAB3/calculator.sh
+./LAB3/str_cmp.sh
+./LAB3/compare.sh
+./LAB3/marks.sh
+./LAB3/test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ find . -mtime -2 -print
+.
+./LAB1
+./Class
+./Class/note
+./LAB5
+./LAB5/comib.sh
+rohit@ubuntu:~/Desktop/USP$ find . -mtime +2 -print
+./LAB1/tria.sh
+./LAB1/rect.sh
+./LAB1/circle.sh
+./Class/filetest.sh
+./Class/class2
+./Class/while.sh
+./Class/two.sh
+./Class/class1
+./Class/lab.sh
+./Class/for1.sh
+./Class/while1.sh
+./Class/??
+./Class/typescript
+./Class/for.sh
+./Class/stu.sh
+./Class/student.lst
+./Class/new
+./Class/for2.sh
+./Class/menu.sh
+./Class/one.sh
+./Class/calci.sh
+./LAB2
+./LAB2/largest.sh
+./LAB2/even.sh
+./LAB2/empl.sh
+./LAB2/largest2.sh
+./LAB2/leap_yr.sh
+./LAB2/cels.sh
+./LAB2/positive.sh
+./LAB5/sum-n.sh
+./LAB5/power.sh
+./LAB5/sum-even.sh
+./LAB4
+./LAB4/prime.sh
+./LAB4/sum-of-n.sh
+./LAB4/fibonoci.sh
+./LAB4/primerange.sh
+./LAB4/factorial.sh
+./LAB3
+./LAB3/calculator.sh
+./LAB3/str_cmp.sh
+./LAB3/compare.sh
+./LAB3/marks.sh
+./LAB3/test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ find . -atime +2 -print
+./LAB1/tria.sh
+./LAB1/rect.sh
+./LAB1/circle.sh
+./Class/filetest.sh
+./Class/class2
+./Class/two.sh
+./Class/class1
+./Class/lab.sh
+./Class/for1.sh
+./Class/while1.sh
+./Class/typescript
+./Class/for.sh
+./Class/stu.sh
+./Class/student.lst
+./Class/new
+./Class/for2.sh
+./Class/menu.sh
+./Class/one.sh
+./Class/calci.sh
+./LAB2/largest.sh
+./LAB2/even.sh
+./LAB2/empl.sh
+./LAB2/largest2.sh
+./LAB2/leap_yr.sh
+./LAB2/cels.sh
+./LAB2/positive.sh
+./LAB4/prime.sh
+./LAB4/sum-of-n.sh
+./LAB4/fibonoci.sh
+./LAB4/primerange.sh
+./LAB3/calculator.sh
+./LAB3/str_cmp.sh
+./LAB3/compare.sh
+./LAB3/marks.sh
+./LAB3/test_eva.sh
+rohit@ubuntu:~/Desktop/USP$ find . -atime +365 -print
+rohit@ubuntu:~/Desktop/USP$ find . -exce date{} \;
+find: unknown predicate `-exce'
+rohit@ubuntu:~/Desktop/USP$ find . -exec date{} \;
+find: ‘date.’: No such file or directory
+find: ‘date./LAB1’: No such file or directory
+find: ‘date./LAB1/tria.sh’: No such file or directory
+find: ‘date./LAB1/rect.sh’: No such file or directory
+find: ‘date./LAB1/circle.sh’: No such file or directory
+find: ‘date./Class’: No such file or directory
+find: ‘date./Class/filetest.sh’: No such file or directory
+find: ‘date./Class/class2’: No such file or directory
+find: ‘date./Class/note’: No such file or directory
+find: ‘date./Class/while.sh’: No such file or directory
+find: ‘date./Class/two.sh’: No such file or directory
+find: ‘date./Class/class1’: No such file or directory
+find: ‘date./Class/lab.sh’: No such file or directory
+find: ‘date./Class/for1.sh’: No such file or directory
+find: ‘date./Class/while1.sh’: No such file or directory
+find: ‘date./Class/??’: No such file or directory
+find: ‘date./Class/typescript’: No such file or directory
+find: ‘date./Class/for.sh’: No such file or directory
+find: ‘date./Class/stu.sh’: No such file or directory
+find: ‘date./Class/student.lst’: No such file or directory
+find: ‘date./Class/new’: No such file or directory
+find: ‘date./Class/for2.sh’: No such file or directory
+find: ‘date./Class/menu.sh’: No such file or directory
+find: ‘date./Class/one.sh’: No such file or directory
+find: ‘date./Class/calci.sh’: No such file or directory
+find: ‘date./LAB2’: No such file or directory
+find: ‘date./LAB2/largest.sh’: No such file or directory
+find: ‘date./LAB2/even.sh’: No such file or directory
+find: ‘date./LAB2/empl.sh’: No such file or directory
+find: ‘date./LAB2/largest2.sh’: No such file or directory
+find: ‘date./LAB2/leap_yr.sh’: No such file or directory
+find: ‘date./LAB2/cels.sh’: No such file or directory
+find: ‘date./LAB2/positive.sh’: No such file or directory
+find: ‘date./LAB5’: No such file or directory
+find: ‘date./LAB5/sum-n.sh’: No such file or directory
+find: ‘date./LAB5/power.sh’: No such file or directory
+find: ‘date./LAB5/comib.sh’: No such file or directory
+find: ‘date./LAB5/sum-even.sh’: No such file or directory
+find: ‘date./LAB4’: No such file or directory
+find: ‘date./LAB4/prime.sh’: No such file or directory
+find: ‘date./LAB4/sum-of-n.sh’: No such file or directory
+find: ‘date./LAB4/fibonoci.sh’: No such file or directory
+find: ‘date./LAB4/primerange.sh’: No such file or directory
+find: ‘date./LAB4/factorial.sh’: No such file or directory
+find: ‘date./LAB3’: No such file or directory
+find: ‘date./LAB3/calculator.sh’: No such file or directory
+find: ‘date./LAB3/str_cmp.sh’: No such file or directory
+find: ‘date./LAB3/compare.sh’: No such file or directory
+find: ‘date./LAB3/marks.sh’: No such file or directory
+find: ‘date./LAB3/test_eva.sh’: No such file or directory
+rohit@ubuntu:~/Desktop/USP$ find / -type f -mtime +2 -mtime -5 -ls
+find: ‘/snap/core18/1885/etc/ssl/private’: Permission denied
+find: ‘/snap/core18/1885/root’: Permission denied
+find: ‘/snap/core18/1885/var/cache/ldconfig’: Permission denied
+find: ‘/snap/core18/1885/var/lib/private’: Permission denied
+find: ‘/snap/core18/1885/var/lib/snapd/void’: Permission denied
+find: ‘/snap/core18/1932/etc/ssl/private’: Permission denied
+find: ‘/snap/core18/1932/root’: Permission denied
+find: ‘/snap/core18/1932/var/cache/ldconfig’: Permission denied
+find: ‘/snap/core18/1932/var/lib/private’: Permission denied
+^Z
+[1]+  Stopped                 find / -type f -mtime +2 -mtime -5 -ls
+rohit@ubuntu:~/Desktop/USP$ find . -type f -mtime +2 -mtime -5 -ls
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -ls
+   660636      4 drwxrwxr-x   8 rohit    rohit        4096 Nov 18 09:22 .
+   660641      4 drwxrwxr-x   2 rohit    rohit        4096 Nov 17 10:23 ./LAB1
+   669407      4 drwxrwxrwx   2 rohit    rohit        4096 Nov 17 10:50 ./Class
+   669415      4 -rw-rw-r--   1 rohit    rohit          63 Nov 17 10:38 ./Class/note
+   668969      4 drwxrwxr-x   2 rohit    rohit        4096 Nov 17 09:39 ./LAB5
+   668971      4 -rw-rw-r--   1 rohit    rohit         111 Nov 17 09:39 ./LAB5/comib.sh
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -lid
+find: unknown predicate `-lid'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -li
+find: unknown predicate `-li'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -ls -i
+find: unknown predicate `-i'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -lsi
+find: unknown predicate `-lsi'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -mtime +2 -o -mtime -5 -ls 
+   660636      4 drwxrwxr-x   8 rohit    rohit        4096 Nov 18 09:22 .
+   660641      4 drwxrwxr-x   2 rohit    rohit        4096 Nov 17 10:23 ./LAB1
+   669407      4 drwxrwxrwx   2 rohit    rohit        4096 Nov 17 10:50 ./Class
+   669415      4 -rw-rw-r--   1 rohit    rohit          63 Nov 17 10:38 ./Class/note
+   668969      4 drwxrwxr-x   2 rohit    rohit        4096 Nov 17 09:39 ./LAB5
+   668971      4 -rw-rw-r--   1 rohit    rohit         111 Nov 17 09:39 ./LAB5/comib.sh
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -atime +10 -print{} \;
+find: unknown predicate `-print{}'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -atime +10 -mv{} $home/rohit/dekstop/AI
+find: unknown predicate `-mv{}'
+rohit@ubuntu:~/Desktop/USP$ find . -type f -a -atime +10 -mv {} $home/rohit/dekstop/AI
+find: unknown predicate `-mv'
+rohit@ubuntu:~/Desktop/USP$ ls
+Class  LAB1  LAB2  LAB3  LAB4  LAB5
+rohit@ubuntu:~/Desktop/USP$ ls -l
+total 24
+drwxrwxrwx 2 rohit rohit 4096 Nov 17 10:50 Class
+drwxrwxr-x 2 rohit rohit 4096 Nov 17 10:23 LAB1
+drwxrwxr-x 2 rohit rohit 4096 Oct 21 18:33 LAB2
+drwxrwxr-x 2 rohit rohit 4096 Oct 21 18:33 LAB3
+drwxrwxr-x 2 rohit rohit 4096 Nov  6 14:40 LAB4
+drwxrwxr-x 2 rohit rohit 4096 Nov 17 09:39 LAB5
+rohit@ubuntu:~/Desktop/USP$ cd ^C
+rohit@ubuntu:~/Desktop/USP$ cd Class
+rohit@ubuntu:~/Desktop/USP/Class$ pr
+ji
+
+
+2020-11-18 09:47                                                  Page 1
+
+
+ji
+^Z
+[2]+  Stopped                 pr
+rohit@ubuntu:~/Desktop/USP/Class$ cc -0.2 1.sh
+cc: error: 1.sh: No such file or directory
+cc: error: unrecognized command line option ‘-0.2’
+cc: fatal error: no input files
+compilation terminated.
+rohit@ubuntu:~/Desktop/USP/Class$ cc -0.2 1.c
+cc: error: 1.c: No such file or directory
+cc: error: unrecognized command line option ‘-0.2’
+cc: fatal error: no input files
+compilation terminated.
+rohit@ubuntu:~/Desktop/USP/Class$ cat > 1.c
+hi
+rohit@ubuntu:~/Desktop/USP/Class$ cc -0.2 1.c
+cc: error: unrecognized command line option ‘-0.2’
+rohit@ubuntu:~/Desktop/USP/Class$ gedit 1.c
+rohit@ubuntu:~/Desktop/USP/Class$ rm 1.c
+rohit@ubuntu:~/Desktop/USP/Class$ ./a.out
+bash: ./a.out: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ ./a.out | pr -t -5
+bash: ./a.out: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ a.out | pr -t -5
+a.out: command not found
+rohit@ubuntu:~/Desktop/USP/Class$  pr -t -5
+
+hi
+
+print
+
+
+
+	      		    		  		
+hi	      print
+rohit@ubuntu:~/Desktop/USP/Class$ 
+-----------------------------------------------------
+rohit@ubuntu:~/Desktop/USP/Class$ pr -t -n -d -o 10 calci.sh
+              1	echo "enter 2 operands"
+
+              2	read a
+
+              3	read b
+
+              4	echo "addition:"
+
+              5	expr $a+$b
+
+              6	echo "subtraction:"
+
+              7	expr $a-$b
+
+              8	echo "multiplication:"
+
+              9	expr $a \* $b
+
+             10	echo "dvision:"
+
+             11	expr $a / $b
+
+             12	echo "reminder"
+
+             13	expr $a % $b 
+
+rohit@ubuntu:~/Desktop/USP/Class$ cat > empl.lst
+rohit | 1234 | b sec
+raj | 2345 | c sec
+kudache | 3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ pr -t -n -d -o 10 empl.lst
+              1	rohit | 1234 | b sec
+
+              2	raj | 2345 | c sec
+
+              3	kudache | 3456 | a sec
+
+rohit@ubuntu:~/Desktop/USP/Class$ pr -l 50 calci.sh
+
+
+2020-09-29 11:04                     calci.sh                     Page 1
+
+
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rohit@ubuntu:~/Desktop/USP/Class$ pr +10 calci.sh
+pr: starting page number 10 exceeds page count 1
+rohit@ubuntu:~/Desktop/USP/Class$ pr +1 calci.sh
+
+
+2020-09-29 11:04                     calci.sh                     Page 1
+
+
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ pr +2 calci.sh
+pr: starting page number 2 exceeds page count 1
+rohit@ubuntu:~/Desktop/USP/Class$ pr -lp 50 calci.sh
+pr: '-l PAGE_LENGTH' invalid number of lines: ‘p’
+rohit@ubuntu:~/Desktop/USP/Class$ pr +1 calci.sh | lp
+lp: Error - No default destination.
+rohit@ubuntu:~/Desktop/USP/Class$ pr +1 calci.sh | newline
+newline: command not found
+rohit@ubuntu:~/Desktop/USP/Class$ pr +1 calci.sh | one.sh
+one.sh: command not found
+rohit@ubuntu:~/Desktop/USP/Class$ pr +1 calci.sh |lp  one.sh
+lp: Error - No default destination.
+rohit@ubuntu:~/Desktop/USP/Class$ 
+rohit@ubuntu:~/Desktop/USP/Class$ head
+^Z
+[1]+  Stopped                 head
+rohit@ubuntu:~/Desktop/USP/Class$ head calci.sh
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 3 calci.sh
+echo "enter 2 operands"
+read a
+read b
+rohit@ubuntu:~/Desktop/USP/Class$ head -n * calci.sh
+head: invalid number of lines: ‘??’
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 50 calci.sh
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ ls -t
+ empl.lst   for1.sh     while.sh   filetest.sh   student.lst
+ note       for2.sh     menu.sh    class2        typescript
+'??'        for.sh      two.sh     class1        lab.sh
+ new        while1.sh   one.sh     stu.sh        calci.sh
+rohit@ubuntu:~/Desktop/USP/Class$ 
+rohit@ubuntu:~/Desktop/USP/Class$ ls -t | head -n 1
+empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ ls -t | head -n 3
+empl.lst
+note
+??
+rohit@ubuntu:~/Desktop/USP/Class$ gedit `ls -t | head -n 1`
+rohit@ubuntu:~/Desktop/USP/Class$ gedit `ls -t | head -n 2`
+rohit@ubuntu:~/Desktop/USP/Class$ tail calci.sh
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -n 2 calci.sh
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -f 
+^Z
+[2]+  Stopped                 tail -f
+rohit@ubuntu:~/Desktop/USP/Class$ tail -f | head -n 1
+^Z
+[3]+  Stopped                 tail -f | head -n 1
+rohit@ubuntu:~/Desktop/USP/Class$ tail -f | head -n 1
+l 
+l
+lm
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c calci.sh
+tail: invalid number of bytes: ‘calci.sh’
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c -512 calci.sh
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c -5 calci.sh
+ $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c -15 calci.sh
+
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c +15 calci.sh
+operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c +5 calci.sh
+ "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c +0 calci.sh
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c +20 calci.sh
+nds"
+read a
+read b
+echo "addition:"
+expr $a+$b
+echo "subtraction:"
+expr $a-$b
+echo "multiplication:"
+expr $a \* $b
+echo "dvision:"
+expr $a / $b
+echo "reminder"
+expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ tail -c +512 calci.sh
+rohit@ubuntu:~/Desktop/USP/Class$ cut -n 2 calci.sg
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -n 2 calci.sh
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -n 2 emp.lst
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 1 emp.lst
+head: cannot open 'emp.lst' for reading: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 1 empl.lst
+rohit | 1234 | b sec
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 1 empl.lst | tee shortlist
+rohit | 1234 | b sec
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 5 calci.sh | tee shortlist
+echo "enter 2 operands"
+read a
+read b
+echo "addition:"
+expr $a+$b
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 1 empl.lst
+r
+r
+k
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c ,name  empl.lst
+cut: byte/character positions are numbered from 1
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14 empl.lst
+1234 |
+45 | c
+| 3456
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14 7-11 empl.lst
+cut: 7-11: No such file or directory
+1234 |
+45 | c
+| 3456
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14, 7-11 empl.lst
+cut: byte/character positions are numbered from 1
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14, 16-19 empl.lst
+cut: byte/character positions are numbered from 1
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14,16-19 empl.lst
+1234 |b se
+45 | csec
+| 3456| a 
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 9-14,16-19 empl.lst
+34 | bsec
+45 | csec
+56 | asec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c 1-5,7-11 empl.lst
+rohit1234 
+rajku2345 
+kudac3456 
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c -5,7- empl.lst
+rohit1234 | b sec
+rajku2345 | c sec
+kudac3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -c -5,11- empl.lst
+rohit | b sec
+rajku | c sec
+kudac | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -f 1,2 empl.lst
+rohit|1234 | b sec
+rajku|2345 | c sec
+kudac|3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -f 2,3 empl.lst
+rohit|1234 | b sec
+rajku|2345 | c sec
+kudac|3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -f 2,3 empl.lst
+rohit | 1234 | b sec
+rajku | |2345 | c sec
+kudac | 3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -f 1,3 empl.lst
+rohit | 1234 | b sec
+rajku | |2345 | c sec
+kudac | 3456 | a sec
+rohit@ubuntu:~/Desktop/USP/Class$ cut -f 0,3 empl.lst
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d 0,3 empl.lst
+cut: the delimiter must be a single character
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d \| -f  0,3 empl.lst|
+> bash: syntax error: unexpected end of file
+exit
+There are stopped jobs.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d \| -f  0,3 empl.lst | shortlist
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+shortlist: command not found
+rohit@ubuntu:~/Desktop/USP/Class$ who
+rohit    :0           2020-11-19 09:53 (:0)
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d \| -f  0,3 empl.lst |tee  shortlist
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d \| -f  1,2 empl.lst |tee shortlist
+rohit | 1234 
+rajku | 
+kudac | 3456 
+rohit@ubuntu:~/Desktop/USP/Class$ who -h
+who: invalid option -- 'h'
+Try 'who --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ 
+rohit@ubuntu:~/Desktop/USP/Class$ who 
+rohit    :0           2020-11-19 09:53 (:0)
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 1
+rohit
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 2
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 3
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 3
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 
+cut: option requires an argument -- 'f'
+Try 'cut --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 4
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 5
+:0
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 5
+:0
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 10
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 15
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 25
+
+rohit@ubuntu:~/Desktop/USP/Class$ 
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 40
+
+rohit@ubuntu:~/Desktop/USP/Class$ who | cut -d " " -f 100
+
+rohit@ubuntu:~/Desktop/USP/Class$ 
+-----------------------------------------------------
+rohit@ubuntu:~/Desktop/USP/Class$ cat > dept.lst
+1 |account|6363
+1 |account|6213
+2 |admin|5412
+3 |marcketing|1234
+3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ uniq dept.lst
+1 |account|6363
+1 |account|6213
+2 |admin|5412
+3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ sort empl.lst | uniq empl.lst
+rohit | 9999
+rajKU | 2365
+kudac | 5656
+rames | 5656
+abhis | 2365
+ROHIT | 5656
+ABHIS | 7898
+rohit@ubuntu:~/Desktop/USP/Class$ sort dept.lst|uniq - us
+rohit@ubuntu:~/Desktop/USP/Class$ cat us
+1 |account|6213
+1 |account|6363
+2 |admin|5412
+3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ cut -d "|" -f3 dept.lst | sort|uniq -u
+5412
+6213
+6363
+rohit@ubuntu:~/Desktop/USP/Class$ uniq -d dept.lst
+3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ uniq -c dept.lst
+      1 1 |account|6363
+      1 1 |account|6213
+      1 2 |admin|5412
+      2 3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ man tr
+rohit@ubuntu:~/Desktop/USP/Class$ tr "|\" "~-" <dept.lst
+
+
+rohit@ubuntu:~/Desktop/USP/Class$ tr '|\' '~-' < dept.lst | head -n 1
+tr: warning: an unescaped backslash at end of string is not portable
+1 ~account~6363
+rohit@ubuntu:~/Desktop/USP/Class$ tr '|\' '~-' < dept.lst
+tr: warning: an unescaped backslash at end of string is not portable
+1 ~account~6363
+1 ~account~6213
+2 ~admin~5412
+3 ~marcketing~1234
+3 ~marcketing~1234
+rohit@ubuntu:~/Desktop/USP/Class$ head -n 1 dept.lst | tr '[a-z]' '[A-Z]'
+1 |ACCOUNT|6363
+rohit@ubuntu:~/Desktop/USP/Class$  tr '[a-z]' '[A-Z]' dept.lst
+tr: extra operand ‘dept.lst’
+Try 'tr --help' for more information.
+rohit@ubuntu:~/Desktop/USP/Class$ tr '[a-z]' '[A-Z]' <dept.lst
+1 |ACCOUNT|6363
+1 |ACCOUNT|6213
+2 |ADMIN|5412
+3 |MARCKETING|1234
+3 |MARCKETING|1234
+rohit@ubuntu:~/Desktop/USP/Class$ tr -d '|' <dept.lst
+1 account6363
+1 account6213
+2 admin5412
+3 marcketing1234
+3 marcketing1234
+rohit@ubuntu:~/Desktop/USP/Class$ tr -s ' ' <dept.lst
+1 |account|6363
+1 |account|6213
+2 |admin|5412
+3 |marcketing|1234
+3 |marcketing|1234
+rohit@ubuntu:~/Desktop/USP/Class$ tr -cd '|' < dept.lsyt
+bash: dept.lsyt: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ tr -cd '|' <dept.lsyt
+bash: dept.lsyt: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ tr -cd '|' < dept.lst
+||||||||||rohit@ubuntu:~/Desktop/USP/Class$ tr -cd '|' <dept.lst
+||||||||||rohit@ubuntu:~/Desktop/USP/Class$ tr '|' '012' <dept.lst
+1 0account06363
+1 0account06213
+2 0admin05412
+3 0marcketing01234
+3 0marcketing01234
+rohit@ubuntu:~/Desktop/USP/Class$ tr '|' '\012' <dept.lst
+1 
+account
+6363
+1 
+account
+6213
+2 
+admin
+5412
+3 
+marcketing
+1234
+3 
+marcketing
+1234
+rohit@ubuntu:~/Desktop/USP/Class$ 
+tr " \011" "\012 \012" <dept.lst| tr \
+> -cd "[a-z A-Z \012]"|sort| uniq -c
+      5 
+      2 account
+      1 admin
+      2 marcketing
+------------------------------------------------------------------
+rohit@ubuntu:~/Desktop/USP/Class$ grep echo calci.sh
+echo "enter 2 operands"
+echo "addition:"
+echo "subtraction:"
+echo "multiplication:"
+echo "dvision:"
+echo "reminder"
+rohit@ubuntu:~/Desktop/USP/Class$ grep "ncc cadet" empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep ncc cadet empl.lst
+grep: cadet: No such file or directory
+empl.lst:Rohit|1234|B sec|ncc cadet|RDC-2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep "B sec" empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+rohit@ubuntu:~/Desktop/USP/Class$ who|grep rohit >f1
+rohit@ubuntu:~/Desktop/USP/Class$ cat f1
+rohit    :0           2020-11-26 09:54 (:0)
+rohit@ubuntu:~/Desktop/USP/Class$ grep president empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep "Bsec echo" addrbook empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep "Bsec"-o " echo" addrbook empl.lst
+grep:  echo: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ grep "Bsec"-o "echo" addrbook empl.lst
+grep: echo: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ grep "echo"  addrbook empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep "echo"  calci.sh empl.lst
+calci.sh:echo "enter 2 operands"
+calci.sh:echo "addition:"
+calci.sh:echo "subtraction:"
+calci.sh:echo "multiplication:"
+calci.sh:echo "dvision:"
+calci.sh:echo "reminder"
+rohit@ubuntu:~/Desktop/USP/Class$ grep "b"  calci.sh empl.lst
+calci.sh:read b
+calci.sh:expr $a+$b
+calci.sh:echo "subtraction:"
+calci.sh:expr $a-$b
+calci.sh:expr $a \* $b
+calci.sh:expr $a / $b
+calci.sh:expr $a % $b 
+rohit@ubuntu:~/Desktop/USP/Class$ grep -n "B sec" empl.lst
+1:Rohit|1234|B sec|ncc cadet|RDC-2020
+2:Rakesh|2345|B sec|PC college|2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep -i "B sec" empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep -i "b Sec" empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep -v "B sec" empl.lst
+Ramesh|4567|C sec|CR class|2019
+RAjesh|8956|C sec|Student|2018-2022
+
+rohit@ubuntu:~/Desktop/USP/Class$ grep -c "B sec" empl.lst
+2
+rohit@ubuntu:~/Desktop/USP/Class$ grep -c -n "B sec" empl.lst
+2
+rohit@ubuntu:~/Desktop/USP/Class$ grep -l "B sec" empl.lst
+empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "B sec" empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "b sec" empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep -n "C sec" empl.lst
+3:Ramesh|4567|C sec|CR class|2019
+4:RAjesh|8956|C sec|Student|2018-2022
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "ncc cadet" empl.lst
+1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "NCC cadet" empl.lst
+1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -cin "NCC cadet" empl.lst
+1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "NCC cadet" emp*
+1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "NCC cadet" emp*.lst
+1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "echo" for*.lst
+grep: for*.lst: No such file or directory
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ci "echo" for*.sh
+for1.sh:2
+for2.sh:1
+for.sh:1
+rohit@ubuntu:~/Desktop/USP/Class$ grep -n "echo" for*.sh
+for1.sh:4:		echo "even" ;continue
+for1.sh:6:		echo "odd"
+for2.sh:6:		echo "$v1 - $v2"
+for.sh:3:		echo "$var \n"
+rohit@ubuntu:~/Desktop/USP/Class$ grep -n "echo" *.sh
+1BM18CS083.sh:7:    echo -n "$number "
+1BM18CS083.sh:11:  echo
+calci.sh:1:echo "enter 2 operands"
+calci.sh:4:echo "addition:"
+calci.sh:6:echo "subtraction:"
+calci.sh:8:echo "multiplication:"
+calci.sh:10:echo "dvision:"
+calci.sh:12:echo "reminder"
+filetest.sh:2:	echo "File  exists"
+filetest.sh:4:	echo "File cannot read"
+filetest.sh:6:	echo "file cannoot write"
+filetest.sh:8:	echo "File can be read and write"
+for1.sh:4:		echo "even" ;continue
+for1.sh:6:		echo "odd"
+for2.sh:6:		echo "$v1 - $v2"
+for.sh:3:		echo "$var \n"
+lab.sh:5:echo $home
+menu.sh:1:echo "MENU \n
+menu.sh:11:	*) echo "invalid"
+one.sh:1:echo "world to shell name called one"
+stu.sh:1:echo "program file name is $0
+two.sh:1:echo "world to shell name called one"
+while1.sh:4:	echo "enter code n discr :\c" > /dev/tty
+while1.sh:6:	echo "$code|$description" >> newlist
+while1.sh:7:	echo "enter any more (Y/N)? \c" > /dev/tty
+while.sh:4:	echo $a
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "b sec" -e "c sec"  empl.lst
+rohit@ubuntu:~/Desktop/USP/Class$ grep -ei "b sec" -ei "c sec"  empl.lst
+grep: b sec: No such file or directory
+grep: c sec: No such file or directory
+empl.lst:Rohit|1234|B sec|ncc cadet|RDC-2020
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "B sec" -e "C sec"  empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+Ramesh|4567|C sec|CR class|2019
+RAjesh|8956|C sec|Student|2018-2022
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "B sec" -e "4"  empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+Ramesh|4567|C sec|CR class|2019
+rohit@ubuntu:~/Desktop/USP/Class$ grep -e "C sec" -e "4"  empl.lst
+Rohit|1234|B sec|ncc cadet|RDC-2020
+Rakesh|2345|B sec|PC college|2020
+Ramesh|4567|C sec|CR class|2019
+RAjesh|8956|C sec|Student|2018-2022
+rohit@ubuntu:~/Desktop/USP/Class$ grep -f  calci.sh for.sh
+------------------------------------------------------------------
